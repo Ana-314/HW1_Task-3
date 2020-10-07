@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class A {
+        int[] numArray = new int[40];
+        int first,last;
+
+        void input(){
+            Scanner input = new Scanner(System.in);
+            System.out.println("first number: ");
+            first = input.nextInt();
+            System.out.println("second number: ");
+            last = input.nextInt();
+            goCalc(numArray,first, last);
+
+
+        }
+
+        void goCalc(int[] arr,int first,int last){
+            int odd = 0, oddSum = 0,even = 0, evenSum = 0;
+            if (last > first){
+              int n;
+              n = first ;
+              first = last;
+              last = n;
+            }
+
+            for(int i=0;i<arr.length;i++){
+                int randomNum = (int) (Math.random() * (last - first +1 )) + first;
+                if (randomNum % 2 == 0){
+                  odd += 1;
+                  oddSum += randomNum;
+                }else{
+                  even +=1;
+                  evenSum += randomNum;
+                }
+                arr[i] = randomNum;
+            }
+
+            for (int number: arr) {
+                System.out.println("Number in array: "+number);
+            }
+            System.out.println("evenSum "+evenSum);
+            System.out.println("even "+even);
+            System.out.println("oddSum: "+oddSum);
+            System.out.println("odd: "+odd);
+
+
+
+            if (evenSum > oddSum){
+              int n;
+              n = oddSum ;
+              oddSum = evenSum;
+              evenSum = n;
+            }
+
+            for(int i=0;i<5;i++){
+                int randomNum = (int) (Math.random() * (evenSum - oddSum +1 )) + oddSum;
+                System.out.println("Number : "+ randomNum);
+            }
+
+        }
+
+
+}
